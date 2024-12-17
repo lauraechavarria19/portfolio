@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>diy</title>
+  <!-- Agregar la librería de p5.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    var initials = 'la'; // Initiales
+    var choice = '1'; // Herramienta inicial
+    var screenbg = 240; // Color de fondo cálido
+    var lastscreenshot = 61; // Última marca de captura
+
+    function setup() {
+      createCanvas(600, 400); // Crear lienzo
+      background(screenbg); // Fondo de lienzo
+    }
+
+    function draw() {
+      if (keyIsPressed) {
+        choice = key; // Cambiar herramienta según la tecla presionada
+        clear_print(); // Limpiar o guardar según la tecla
+      }
+      if (mouseIsPressed) {
+        newkeyChoice(choice); // Usar la herramienta seleccionada
+      }
+    }
+
+    function newkeyChoice(toolChoice) {
+      if (toolChoice == '1') {
+        // Líneas suaves para cielo o niebla
+        stroke(135, 206, 235, 80); // Azul claro con transparencia
+        strokeWeight(2);
+        line(mouseX, mouseY, pmouseX, pmouseY);
+      } else if (toolChoice == '2') {
+        // Líneas gruesas para montañas
+        stroke(34, 139, 34); // Verde bosque
+        strokeWeight(5);
+        line(mouseX, mouseY, pmouseX, pmouseY);
+      } else if (toolChoice == '3') {
+        // Sol con círculos
+        noStroke();
+        fill(255, 204, 0, 150); // Amarillo cálido
+        ellipse(mouseX, mouseY, 50, 50);
+      } else if (toolChoice == '4') {
+        // Césped con rectángulos verticales
+        noStroke();
+        fill(124, 252, 0); // Verde brillante
+        rect(mouseX, mouseY, 10, 50);
+      } else if (toolChoice == '5') {
+        // Nubes suaves
+        noStroke();
+        fill(255, 255, 255, 200); // Blanco translúcido
+        ellipse(mouseX, mouseY, 80, 50);
+        ellipse(mouseX + 30, mouseY - 10, 60, 40);
+        ellipse(mouseX - 30, mouseY - 10, 60, 40);
+      } else if (toolChoice == '6') {
+        // Árboles con triángulos y troncos
+        fill(34, 139, 34); // Verde
+        triangle(mouseX, mouseY, mouseX - 20, mouseY + 60, mouseX + 20, mouseY + 60);
+        fill(139, 69, 19); // Marrón
+        rect(mouseX - 5, mouseY + 60, 10, 20);
+      } else if (toolChoice == '7') {
+        // Líneas onduladas para agua
+        stroke(0, 191, 255, 150); // Azul claro con transparencia
+        strokeWeight(2);
+        line(mouseX, mouseY, pmouseX, pmouseY);
+      } else if (toolChoice == '8') {
+        // Estrellas (puntos pequeños)
+        noStroke();
+        fill(255, 255, 224, 200); // Blanco suave
+        ellipse(mouseX, mouseY, random(2, 5), random(2, 5));
+      } else if (toolChoice == '9') {
+        // Rocas con óvalos
+        fill(169, 169, 169); // Gris
+        ellipse(mouseX, mouseY, 40, 30);
+      } else if (toolChoice == '0') {
+        // Formas abstractas y coloridas
+        noStroke();
+        fill(random(255), random(255), random(255), 100);
+        rect(mouseX, mouseY, random(20, 50), random(20, 50));
+      }
+    }
+
+    function clear_print() {
+      if (key == 'x' || key == 'X') {
+        background(screenbg); // Limpiar lienzo
+      } else if (key == 'p' || key == 'P') {
+        saveme(); // Guardar el lienzo
+      }
+    }
+
+    function saveme() {
+      let filename = initials + day() + hour() + minute() + second();
+      if (second() != lastscreenshot) {
+        saveCanvas('drawing', 'jpg'); // Guardar como jpg
+        key = "";
+      }
+      lastscreenshot = second();
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first memory</title>
+    <style>
+        body {
+            background-color: #e6e6fa; /* Light purple */
+            color: #000000;
+        }
+
+        a {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            background-color: #d8bfd8;
+            color: #000000;
+            border: 2px solid #9370db;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #9370db;
+            color: #ffffff;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            display: flex; /* Mostrar imágenes en fila */
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            align-items: center; /* Alinear verticalmente */
+            gap: 20px; /* Espacio entre imágenes */
+        }
+
+        .image-container img {
+            width: 300px; /* Ancho fijo */
+            height: 300px; /* Alto fijo */
+            object-fit: cover; /* Asegura que la imagen se ajuste dentro del cuadro sin distorsionarse */
+            border-radius: 10px;
+            border: 2px solid #9370db;
+        }
+
+        @media (max-width: 768px) {
+            /* Diseño responsivo para pantallas pequeñas */
+            .image-container {
+                flex-direction: column; /* Cambia a columna si no hay espacio */
+            }
+
+            .image-container img {
+                width: 80%; /* Ajusta el tamaño para pantallas pequeñas */
+                height: auto; /* Mantén la proporción */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>first memory</h1>
+        <p>When Laura was a little girl, every day with her family she created memories and kept them in her heart, like untouched memories, believing that they would never change. But those memories were already steeped in the fact that nothing is forever.</p>
+        
+        <div class="image-container">
+            <img src="kid.jpg" alt="Memory One">
+            <img src="me.jpg" alt="Memory Two">
+        </div>
+        
+        <a href="memory2.html" class="link">welcome to my past... click?</a>
+    </div>
+</body>
+</html>
+
